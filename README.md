@@ -1,4 +1,4 @@
-```markdown
+
 # 🤖 Warehouse RL Path Optimizer - PPO Edition
 
 <div align="center">
