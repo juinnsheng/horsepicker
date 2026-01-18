@@ -13,10 +13,9 @@ A **state-of-the-art** reinforcement learning warehouse pathfinding system using
 ### Advanced RL (Python Backend with PPO)
 - **PPO Algorithm** - State-of-the-art policy gradient method from Stable-Baselines3
 - **Neural Network Policy** - MLP (Multi-Layer Perceptron) for complex decision making
-- **Enhanced Observations** - 7-dimensional state space for better learning
 - **Reward Shaping** - Sophisticated reward structure for optimal pathfinding
 - **Gymnasium Environment** - Custom warehouse navigation environment
-- **Memory Optimized** - Tuned for M1 Mac 8GB RAM
+
 
 ### Interactive Frontend (React)
 - Real-time path visualization
@@ -49,9 +48,6 @@ source venv/bin/activate  # On Mac/Linux
 # Install dependencies
 pip install flask==3.0.0 flask-cors==4.0.0 gymnasium==0.29.1 numpy==1.26.2 stable-baselines3==2.2.1 torch==2.1.2
 
-# Save the backend code as app.py
-# (Copy the Python backend code provided above)
-
 # Run the server
 python app.py
 ```
@@ -64,27 +60,18 @@ python app.py
 Algorithm: PPO (Proximal Policy Optimization)
 Framework: Stable-Baselines3
 Environment: Custom Gymnasium
-Server: http://localhost:5000
+Server: http://localhost:8080
 ============================================================
 ```
 
 ### 2. Frontend Setup (React)
 
-You have two options:
-
-#### Option A: Use Claude.ai Artifact (Easiest)
-The React frontend is already running in the artifact above! Just make sure the Python backend is running.
-
-#### Option B: Local React Setup
 ```bash
 # In a new terminal (from warehouse-rl-ppo directory)
-npx create-react-app frontend
 cd frontend
 
 # Install dependencies
 npm install lucide-react
-
-# Replace src/App.js with the React code provided above
 
 # Start React app
 npm start
@@ -103,35 +90,11 @@ Frontend will run on `http://localhost:3000`
    python app.py
    ```
 
-2. **Access Frontend**
-   - Use the Claude artifact (recommended), OR
-   - Open `http://localhost:3000` if using local React
-
-3. **Pick Items**
+2. **Pick Items**
    - Check SKUs you need to pick from the list
    - Optionally mark construction zones in Settings
    - Click **Start** to train PPO model and find optimal path
    - Watch the robot navigate with AI-learned behavior!
-
----
-
-## 🧠 PPO Deep Dive
-
-### Why PPO is Better Than Q-Learning
-
-**PPO (Proximal Policy Optimization):**
-- ✅ Uses neural networks for complex pattern recognition
-- ✅ Better generalization to unseen scenarios
-- ✅ More stable training with clipped objective
-- ✅ Industry standard (used by OpenAI, DeepMind)
-- ✅ Can handle continuous action spaces
-- ✅ Better sample efficiency
-
-**Q-Learning:**
-- ❌ Requires discretization of state space
-- ❌ Poor scalability to large environments
-- ❌ Can't generalize well
-- ❌ Tabular method (memory intensive for large spaces)
 
 ### PPO Architecture
 
@@ -179,7 +142,7 @@ if obstacle/boundary: reward = -15
 if max_steps_reached: reward -= 50
 ```
 
-### PPO Hyperparameters (Optimized for M1 8GB)
+### PPO Hyperparameters (Optimized for CPU)
 
 ```python
 learning_rate=3e-4        # Standard PPO learning rate
@@ -269,28 +232,14 @@ Health check
 - Flask (REST API)
 - **Stable-Baselines3** (PPO implementation)
 - **PyTorch** (Neural network backend)
-- Gymnasium (RL Environment)
 - NumPy (Numerical operations)
 
 **Frontend:**
 - React 18
 - Lucide React (Icons)
-- Tailwind CSS (Styling)
+- Bootstrap CSS
 
----
-
-## 💡 Performance Comparison
-
-### Q-Learning vs PPO
-
-| Metric | Q-Learning | PPO |
-|--------|-----------|-----|
-| Training Time | 2-3s | 8-12s |
-| Path Quality | 85-90% optimal | 92-98% optimal |
-| Generalization | Poor | Excellent |
-| Memory Usage | 10MB | 50MB |
-| Scalability | Limited | Excellent |
-| Adaptability | Fixed rules | Learns patterns |
+### Personal Notes
 
 ### When to Use Each
 
@@ -397,10 +346,9 @@ model = A2C("MlpPolicy", env)
 
 ## 🐛 Troubleshooting
 
-**Slow training on M1:**
+**Slow training1:**
 ```bash
 # Make sure using correct torch version
-pip install torch==2.1.2  # M1-optimized
 
 # Reduce timesteps
 timesteps = 10000  # Instead of 20000
@@ -476,7 +424,5 @@ Want to take this further?
 The possibilities are endless with PPO! 🎯🤖
 
 ---
-
-**Enjoy your ML-powered warehouse with cutting-edge PPO!** 🚀📦
 ```
 
